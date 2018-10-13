@@ -4,13 +4,13 @@
 #
 Name     : perl-Digest-HMAC
 Version  : 1.03
-Release  : 2
+Release  : 3
 URL      : https://cpan.metacpan.org/authors/id/G/GA/GAAS/Digest-HMAC-1.03.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/G/GA/GAAS/Digest-HMAC-1.03.tar.gz
 Summary  : Keyed-Hashing for Message Authentication
 Group    : Development/Tools
 License  : Artistic-1.0-Perl
-Requires: perl-Digest-HMAC-man
+BuildRequires : buildreq-cpan
 
 %description
 HMAC is used for message integrity checks between two parties that
@@ -18,12 +18,13 @@ share a secret key, and works in combination with some other Digest
 algorithm, usually MD5 or SHA-1.  The HMAC mechanism is described in
 RFC 2104.
 
-%package man
-Summary: man components for the perl-Digest-HMAC package.
-Group: Default
+%package dev
+Summary: dev components for the perl-Digest-HMAC package.
+Group: Development
+Provides: perl-Digest-HMAC-devel = %{version}-%{release}
 
-%description man
-man components for the perl-Digest-HMAC package.
+%description dev
+dev components for the perl-Digest-HMAC package.
 
 
 %prep
@@ -52,9 +53,9 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 if test -f Makefile.PL; then
-make pure_install PERL_INSTALL_ROOT=%{buildroot}
+make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
-./Build install --installdirs=site --destdir=%{buildroot}
+./Build install --installdirs=vendor --destdir=%{buildroot}
 fi
 find %{buildroot} -type f -name .packlist -exec rm -f {} ';'
 find %{buildroot} -depth -type d -exec rmdir {} 2>/dev/null ';'
@@ -63,11 +64,11 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/site_perl/5.26.1/Digest/HMAC.pm
-/usr/lib/perl5/site_perl/5.26.1/Digest/HMAC_MD5.pm
-/usr/lib/perl5/site_perl/5.26.1/Digest/HMAC_SHA1.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Digest/HMAC.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Digest/HMAC_MD5.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Digest/HMAC_SHA1.pm
 
-%files man
+%files dev
 %defattr(-,root,root,-)
 /usr/share/man/man3/Digest::HMAC.3
 /usr/share/man/man3/Digest::HMAC_MD5.3
