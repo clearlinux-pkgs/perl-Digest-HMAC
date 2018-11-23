@@ -64,9 +64,9 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.26.1/Digest/HMAC.pm
-/usr/lib/perl5/vendor_perl/5.26.1/Digest/HMAC_MD5.pm
-/usr/lib/perl5/vendor_perl/5.26.1/Digest/HMAC_SHA1.pm
+/usr/lib/perl5/vendor_perl/5.28.0/Digest/HMAC.pm
+/usr/lib/perl5/vendor_perl/5.28.0/Digest/HMAC_MD5.pm
+/usr/lib/perl5/vendor_perl/5.28.0/Digest/HMAC_SHA1.pm
 
 %files dev
 %defattr(-,root,root,-)
