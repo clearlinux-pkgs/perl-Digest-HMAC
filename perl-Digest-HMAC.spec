@@ -4,7 +4,7 @@
 #
 Name     : perl-Digest-HMAC
 Version  : 1.03
-Release  : 8
+Release  : 9
 URL      : https://cpan.metacpan.org/authors/id/G/GA/GAAS/Digest-HMAC-1.03.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/G/GA/GAAS/Digest-HMAC-1.03.tar.gz
 Summary  : Keyed-Hashing for Message Authentication
