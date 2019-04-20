@@ -4,10 +4,10 @@
 #
 Name     : perl-Digest-HMAC
 Version  : 1.03
-Release  : 10
+Release  : 11
 URL      : https://cpan.metacpan.org/authors/id/G/GA/GAAS/Digest-HMAC-1.03.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/G/GA/GAAS/Digest-HMAC-1.03.tar.gz
-Summary  : Keyed-Hashing for Message Authentication
+Summary  : Perl Module: Keyed-Hashing for Message Authentication.
 Group    : Development/Tools
 License  : Artistic-1.0-Perl
 BuildRequires : buildreq-cpan
@@ -22,6 +22,7 @@ RFC 2104.
 Summary: dev components for the perl-Digest-HMAC package.
 Group: Development
 Provides: perl-Digest-HMAC-devel = %{version}-%{release}
+Requires: perl-Digest-HMAC = %{version}-%{release}
 
 %description dev
 dev components for the perl-Digest-HMAC package.
