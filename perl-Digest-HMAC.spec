@@ -4,12 +4,13 @@
 #
 Name     : perl-Digest-HMAC
 Version  : 1.03
-Release  : 13
+Release  : 14
 URL      : https://cpan.metacpan.org/authors/id/G/GA/GAAS/Digest-HMAC-1.03.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/G/GA/GAAS/Digest-HMAC-1.03.tar.gz
-Summary  : Perl Module: Keyed-Hashing for Message Authentication.
+Summary  : Keyed-Hashing for Message Authentication
 Group    : Development/Tools
 License  : Artistic-1.0-Perl
+Requires: perl-Digest-HMAC-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 
 %description
@@ -28,14 +29,24 @@ Requires: perl-Digest-HMAC = %{version}-%{release}
 dev components for the perl-Digest-HMAC package.
 
 
+%package perl
+Summary: perl components for the perl-Digest-HMAC package.
+Group: Default
+Requires: perl-Digest-HMAC = %{version}-%{release}
+
+%description perl
+perl components for the perl-Digest-HMAC package.
+
+
 %prep
 %setup -q -n Digest-HMAC-1.03
+cd %{_builddir}/Digest-HMAC-1.03
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make  %{?_smp_mflags}
@@ -45,7 +56,7 @@ else
 fi
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
@@ -65,12 +76,15 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/Digest/HMAC.pm
-/usr/lib/perl5/vendor_perl/5.28.2/Digest/HMAC_MD5.pm
-/usr/lib/perl5/vendor_perl/5.28.2/Digest/HMAC_SHA1.pm
 
 %files dev
 %defattr(-,root,root,-)
 /usr/share/man/man3/Digest::HMAC.3
 /usr/share/man/man3/Digest::HMAC_MD5.3
 /usr/share/man/man3/Digest::HMAC_SHA1.3
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/Digest/HMAC.pm
+/usr/lib/perl5/vendor_perl/5.30.1/Digest/HMAC_MD5.pm
+/usr/lib/perl5/vendor_perl/5.30.1/Digest/HMAC_SHA1.pm
