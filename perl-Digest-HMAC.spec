@@ -4,12 +4,13 @@
 #
 Name     : perl-Digest-HMAC
 Version  : 1.04
-Release  : 19
+Release  : 20
 URL      : https://cpan.metacpan.org/authors/id/A/AR/ARODLAND/Digest-HMAC-1.04.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/A/AR/ARODLAND/Digest-HMAC-1.04.tar.gz
 Summary  : 'Keyed-Hashing for Message Authentication'
 Group    : Development/Tools
-License  : Artistic-1.0-Perl
+License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
+Requires: perl-Digest-HMAC-license = %{version}-%{release}
 Requires: perl-Digest-HMAC-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 
@@ -26,6 +27,14 @@ Requires: perl-Digest-HMAC = %{version}-%{release}
 
 %description dev
 dev components for the perl-Digest-HMAC package.
+
+
+%package license
+Summary: license components for the perl-Digest-HMAC package.
+Group: Default
+
+%description license
+license components for the perl-Digest-HMAC package.
 
 
 %package perl
@@ -63,6 +72,8 @@ make TEST_VERBOSE=1 test
 
 %install
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/perl-Digest-HMAC
+cp %{_builddir}/Digest-HMAC-1.04/LICENSE %{buildroot}/usr/share/package-licenses/perl-Digest-HMAC/bda622ee4c7e829c03f74d330e7dd6f55a8a55da
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -81,6 +92,10 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 /usr/share/man/man3/Digest::HMAC.3
 /usr/share/man/man3/Digest::HMAC_MD5.3
 /usr/share/man/man3/Digest::HMAC_SHA1.3
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/perl-Digest-HMAC/bda622ee4c7e829c03f74d330e7dd6f55a8a55da
 
 %files perl
 %defattr(-,root,root,-)
