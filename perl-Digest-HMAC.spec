@@ -4,7 +4,7 @@
 #
 Name     : perl-Digest-HMAC
 Version  : 1.04
-Release  : 24
+Release  : 25
 URL      : https://cpan.metacpan.org/authors/id/A/AR/ARODLAND/Digest-HMAC-1.04.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/A/AR/ARODLAND/Digest-HMAC-1.04.tar.gz
 Summary  : 'Keyed-Hashing for Message Authentication'
@@ -99,6 +99,4 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.34.0/Digest/HMAC.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Digest/HMAC_MD5.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Digest/HMAC_SHA1.pm
+/usr/lib/perl5/*
