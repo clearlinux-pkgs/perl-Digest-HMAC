@@ -7,7 +7,7 @@
 #
 Name     : perl-Digest-HMAC
 Version  : 1.05
-Release  : 32
+Release  : 33
 URL      : https://cpan.metacpan.org/authors/id/A/AR/ARODLAND/Digest-HMAC-1.05.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/A/AR/ARODLAND/Digest-HMAC-1.05.tar.gz
 Summary  : 'Keyed-Hashing for Message Authentication'
